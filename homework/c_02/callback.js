@@ -39,9 +39,8 @@ function totalBrick(callback) {
 }
 function brickCalc(h, w, callback) {
     var brick = 12;
-
     var result = (h * w) * brick;
     console.log("Total number of brick " + Math.round(result));
 
 }
-brickCalc(4.5, 2.9, totalBrick)
+brickCalc(4.1, 2.9, totalBrick)
