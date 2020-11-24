@@ -52,7 +52,7 @@ checker();
 
 
 
-//  exercise two Promise - Fill the tanks with oil
+//  exercise tree Promise - Fill the tanks with oil
 const calcOilLeft = (sold) => {
 
     var total = 1000;
@@ -79,3 +79,7 @@ calcOilLeft(933)
     }).catch(err => {
         console.log(err)
     })
+
+
+
+

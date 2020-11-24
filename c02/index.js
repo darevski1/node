@@ -1,32 +1,31 @@
-// const cb = () => {
-//     console.log("Time out");
-// }
-// cb();
-// setTimeout(cb, 1000);
+const cb = () => {
+    console.log("Time out");
+}
+cb();
+setTimeout(cb, 1000);
 
-// console.log("***");
+console.log("***");
 
-// function showresult(output) {
-//     console.log(output);
-// }
+function showresult(output) {
+    console.log(output);
+}
 
-// function res(temp, convert, cb) {
+function res(temp, convert, cb) {
 
-// if (convert == "c2f") {
-//     let value = (temp * 1.8) + 32;
-//     cb(value);
-// } else if (convert == "f2c") {
-//     let value = (temp - 32) / 1.8;
-//     cb(value);
-// }
+    if (convert == "c2f") {
+        let value = (temp * 1.8) + 32;
+        cb(value);
+    } else if (convert == "f2c") {
+        let value = (temp - 32) / 1.8;
+        cb(value);
+    }
 
-//     convert == "f2c" ? value = (temp * 1.8) + 32 : value = (temp - 32) / 1.8;
-//     cb(value)
+    convert == "f2c" ? value = (temp * 1.8) + 32 : value = (temp - 32) / 1.8;
+    cb(value)
 
+}
 
-// }
-
-// res(42, "c2f", showresult);
+res(42, "c2f", showresult);
 
 
 

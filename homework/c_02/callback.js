@@ -28,7 +28,20 @@ function moneyConvertor(mkdenar, callback) {
     const dolar = 56;
     result = (mkdenar / dolar)
 
-    callback(result)
+    callback("Total dolar" + result)
 }
-
 moneyConvertor(5000, moneyValue)
+
+
+// Brick calculator
+function totalBrick(callback) {
+    console.log(callback)
+}
+function brickCalc(h, w, callback) {
+    var brick = 12;
+
+    var result = (h * w) * brick;
+    console.log("Total number of brick " + Math.round(result));
+
+}
+brickCalc(4.5, 2.9, totalBrick)
