@@ -1,9 +1,8 @@
 const usersModel = require("../pkg/users");
 const userValidator = require("../pkg/users/validator");
 var bcrypt = require('bcryptjs');
-const jqt = require("jsonwebtoken");
-const cfg = require("..pkg/config/config");
-
+const jwt = require("jsonwebtoken");
+const cfg = require('../pkg/config');
 
 const create = async (req, res) => {
     // validate userdata
@@ -59,10 +58,10 @@ const login = async (req, res) => {
                 email: ru.email,
                 first_name: ru._first_name,
                 last_name: ru._last_name,
-                exp: (new Date()).getDate() + (365 * 24 * 60 * 60 * 100) / 1000
+                exp: (new Date().getTime() + (365 * 24 * 60 * 60 * 1000)) / 1000
             }
-            let key = cfg.get('server'), jwt_key;
-            let token = jwt.sing(payload, key);
+            let key = cfg.get('server').jwt_key;
+            let token = jwt.sign(payload, key);
             return res.status(200).send({ jwt: token });
         }
         return res.status(401).send('Unauthorized');

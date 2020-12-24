@@ -4,13 +4,32 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const jwt = require('express-jwt');
 const auth = require("./handlers/auth");
+const movies = require("./handlers/movies");
+// const songs = require("../pkg/songs");
 const api = express();
 api.use(bodyParser.json());
-api.use(jwt({ secret: cfg.get('server').jwt_key }));
 
 
 
 
+api.use(jwt({
+    secret: cfg.get('server').jwt_key,
+    algorithms: ['HS256']
+}).unless({
+    path: [
+        { url: '/api/v1/auth', methods: ['POST'] },
+        { url: '/api/v1/auth/login', methods: ['POST'] },
+        { url: '/api/v1/auth/forgot-password', methods: ['POST'] },
+        { url: '/api/v1/auth/reset-password', methods: ['POST'] },
+        { url: '/api/v1/auth/movies', methods: ['POST'] },
+        { url: '/api/v1/auth/movies', methods: ['GET'] },
+    ]
+}));
+api.use(function (err, req, res, next) {
+    if (err.name === 'UnauthorizedError') {
+        res.status(401).send('Bad JWT');
+    }
+});
 
 
 // create body account (User Regetration )
@@ -30,6 +49,18 @@ api.get("/api/v1/auth/reset-password", auth.resetPassword);
 api.post("/api/v1/auth/change-password", auth.changePassword);
 // List all users accounts
 api.get("/api/v1/auth/accounts", auth.listAccounts);
+
+// add new movie
+api.get("/api/v1/auth/movies", movies.save);
+api.post("/api/v1/auth/movies", movies.getAll);
+// songs routes
+
+// api.get("/api/v1/auth/songs", songs.getAll);
+// api.get("/api/v1/auth/songs", songs.getOne);
+// api.post("/api/v1/auth/songs", songs.save);
+// api.patch("/api/v1/auth/songs", songs.update);
+// api.delete("/api/v1/auth/songs", songs.remove);
+
 
 
 
