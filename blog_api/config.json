@@ -1,0 +1,19 @@
+{
+    "server": {
+        "port": 9000,
+        "jwt_key": "TaJn4"
+    },
+    "db": {
+        "username": "darevski",
+        "password": "Banana007",
+        "host": "vodno.kkcro.mongodb.net",
+        "dbname": "blog"
+    },
+    "weather": {
+        "api_key": "key..."
+    },
+    "email": {
+        "api_key": "key",
+        "secret": "test..."
+    }
+}

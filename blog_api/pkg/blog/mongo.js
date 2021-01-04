@@ -1,35 +1,32 @@
 const mongoose = require('mongoose');
-
 const Blog = mongoose.model(
-    'users',
+    'blogpost',
     {
-        _id: Number,
-        _deleted: false,
-        _created: false,
+        _deleted: Boolean,
+        _created: Boolean,
         publish_date: Date,
         title: String,
         description: String,
         content: String,
-        tags: [],
+        tags: [String],
         user: {
             first_name: String,
             last_name: String,
-            id: Number,
+            id: String,
         }
     },
-    'users'
+    'blogpost'
 );
-
-
 const getAll = async () => {
     let data = await Blog
         .find()
+        .select()
         .sort({ 'date': -1 })
-        .limit(10)
+        .limit(100)
     return data;
 }
 
-const getOne = async () => {
+const getOne = async (id) => {
     let data = await Blog.findOne({ _id: id });
     return data;
 }
@@ -37,9 +34,11 @@ const getOne = async () => {
 const save = async (blogData) => {
     let post = new Blog(blogData);
     let data = await post.save();
+    return data;
 }
-const search = () => {
-
+const search = async (tags) => {
+    let data = await Blog.find({ tags: tags });
+    return data;
 }
 const update = () => {
 

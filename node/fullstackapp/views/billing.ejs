@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<body>
+    <%- include('partials/navigation') %>
+    <div class="container">
+        <h2>Billing system</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">1</th>
+                    <th scope="col">Process Id</th>
+                    <th scope="col">Payment type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% items.forEach((item) => {%>
+                <tr>
+                    <th scope="row">1</th>
+                    <td><%= item.finance %> </td>
+                    <td><%= item.transactionType%></td>
+                    <td><%= item.transactionType%></td>
+                    <td><%= item.date %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <%- include('partials/footer')%>

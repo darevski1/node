@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+
+<body>
+    <%- include('partials/navigation') %>
+    <div class="container">
+        <% items.forEach((item) => {%>
+        <div class="card mt-5">
+            <div class="card-body">
+                <h5 class="card-title"><%= item.blogtitle %></h5>
+                <p class="card-text">
+                    <%= item.paragraph %>
+                </p>
+                <a href="view/<%= item.slug %>" class="btn btn-link">View</a>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+    <%- include('partials/footer')%>

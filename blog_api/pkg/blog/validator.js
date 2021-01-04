@@ -2,7 +2,7 @@ const { Validator } = require('node-input-validator');
 
 
 const blogSchema = {
-    publish_date: 'require',
+    publish_date: 'required',
     title: 'required|minLength:11',
     description: 'required|minLength:31',
     content: 'required|minLength:11',
